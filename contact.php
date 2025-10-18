@@ -67,41 +67,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <?php require 'include/header.php'; ?>
 
-<h2>Contact</h2>
+<h2 class="my-4 mb-4 text-center fw-bold">Contact</h2>
 
 <?php if ($sent) : ?>
-    <p>Message sent.</p>
+    <div class="alert alert-success text-center fw-semibold">Message sent.</div>
 <?php else: ?>
-
     <?php if (! empty($errors)) : ?>
-        <ul>
-            <?php foreach ($errors as $error) : ?>
-                <li><?= $error ?></li>
-            <?php endforeach; ?>
-        </ul>
+        <div class="alert alert-danger">
+            <ul class="mb-0 ps-3">
+                <?php foreach ($errors as $error) : ?>
+                    <li><?= $error ?></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
     <?php endif; ?>
 
-    <form method="post" id="formContact">
-
-        <div class="form-group">
-            <label for="email">Your email</label>
+    <form method="post" id="formContact" class="mx-auto" style="max-width: 500px;">
+        <div class="mb-3">
+            <label for="email" class="form-label">Your email</label>
             <input class="form-control" name="email" id="email" type="email" placeholder="Your email" value="<?= htmlspecialchars($email) ?>">
         </div>
-
-        <div class="form-group">
-            <label for="subject">Subject</label>
+        <div class="mb-3">
+            <label for="subject" class="form-label">Subject</label>
             <input class="form-control" name="subject" id="subject" placeholder="Subject" value="<?= htmlspecialchars($subject) ?>">
         </div>
-
-        <div class="form-group">
-            <label for="message">Message</label>
-            <textarea class="form-control" name="message" id="message" placeholder="Message"><?= htmlspecialchars($message) ?></textarea>
+        <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" name="message" id="message" placeholder="Message" rows="6"><?= htmlspecialchars($message) ?></textarea>
         </div>
-
-        <button class="btn">Send</button>
-
+        <button class="btn btn-primary w-100">Send</button>
     </form>
-
 <?php endif; ?>
 
 

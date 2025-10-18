@@ -37,9 +37,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <?php require '../include/header.php' ?>
-
-<h2>Edit Article</h2>
-
-<?php require 'include/article-form.php'; ?>
-
+<div class="mx-auto" style="max-width: 720px;">
+    <div class="card shadow-sm border-0 p-4 my-4">
+        <h2 class="fw-bold mb-3">Edit Article</h2>
+        <?php require 'include/article-form.php'; ?>
+    </div>
+</div>
 <?php require '../include/footer.php' ?>

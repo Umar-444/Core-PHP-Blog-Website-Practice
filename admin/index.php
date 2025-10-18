@@ -14,38 +14,38 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);		// 
 
 
 <?php require '../include/header.php'; ?>
-<h2>Administrator</h2>
-
-<p><a href="new-article.php">Add New Article</a></p>
-
-			<?php if (empty($articles)): ?>
-				<p>Oops!.No articles are there.</p>
-			<?php else: ?>
-				<table class="table">
-					<thead>
-						<th>Title</th>
-						<th>Published at</th>
-					</thead>
-						<tbody>
-							<?php foreach ($articles as $article): ?>
-								<tr>
-									<td>
-										<a href="article.php?id=<?= $article['id']; ?>"><?= htmlspecialchars($article['title']); ?></a>
-									</td>
-									<td>
-										<?php if ($article['published_at']): ?>
-											<time><?= $article['published_at'] ?></time>
-										<?php else: ?>
-												Unpublished
-												<button class="btn publish" data-id="<?= $article['id'] ?>">Publish</button>
-										<?php endif; ?>
-									</td>
-								</tr>
-							<?php endforeach; ?>
-						</tbody>
-				</table>
-
-				<?php require '../include/pagination.php'; ?>
-
-			<?php endif; ?>
+<h2 class="fw-bold mb-4">Administrator Dashboard</h2>
+<p><a href="new-article.php" class="btn btn-success mb-3">+ Add New Article</a></p>
+<?php if (empty($articles)): ?>
+    <div class="alert alert-warning">Oops! No articles are there.</div>
+<?php else: ?>
+    <div class="table-responsive mb-4">
+        <table class="table table-bordered table-hover align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>Title</th>
+                    <th>Published at</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($articles as $article): ?>
+                    <tr>
+                        <td>
+                            <a href="article.php?id=<?= $article['id']; ?>" class="fw-semibold link-primary text-decoration-none"><?= htmlspecialchars($article['title']); ?></a>
+                        </td>
+                        <td>
+                            <?php if ($article['published_at']): ?>
+                                <time><?= $article['published_at'] ?></time>
+                            <?php else: ?>
+                                <span class="text-muted">Unpublished</span>
+                                <button class="btn btn-sm btn-outline-primary ms-2 publish" data-id="<?= $article['id'] ?>">Publish</button>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php require '../include/pagination.php'; ?>
+<?php endif; ?>
 <?php require '../include/footer.php' ?>
