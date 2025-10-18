@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/jquery.datetimepicker.min.css">
     <link rel="stylesheet" href="/css/styles.css">
-    <title>INFORMATIVE</title>
+    <title>Informative Place</title>
     <style>
         /* Advanced header background with gradient and shadow */
         .header-gradient-bg {

@@ -31,21 +31,40 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 ?>
 <?php require 'include/header.php' ?>
 
-	<?php if (!empty($error)): ?>
-		<p><?= $error ?></p>
-	<?php endif; ?>
-
-	<h2>Login</h2>
-	<form action="" method="post">
-		<div class="form-group">
-			<label for="username">Username</label>
-			<input type="text" name="username" id="username" class="form-control">
-		</div>
-		<div class="form-group">
-			<label for="password">Password</label>
-			<input type="password" name="password" id="password" class="form-control">
-		</div>
-		<button class="btn">Log In</button>
-	</form>
+<div class="mx-auto" style="max-width: 420px;">
+    <div class="card shadow-sm border-0 p-4 my-5">
+        <h2 class="fw-bold mb-3 text-center">Login</h2>
+        <?php if (!empty($error)): ?>
+            <div class="alert alert-danger text-center"><?= htmlspecialchars($error) ?></div>
+        <?php endif; ?>
+        <form action="" method="post" id="formLogin">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input 
+                    type="text" 
+                    name="username"
+                    id="username"
+                    class="form-control"
+                    placeholder="Enter your username"
+                    required
+                    autofocus
+                    value="<?= htmlspecialchars($_POST['username'] ?? '') ?>"
+                >
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input 
+                    type="password" 
+                    name="password"
+                    id="password"
+                    class="form-control"
+                    placeholder="Enter your password"
+                    required
+                >
+            </div>
+            <button class="btn btn-primary w-100 fw-semibold">Log In</button>
+        </form>
+    </div>
+</div>
 
 <?php require 'include/footer.php' ?>
